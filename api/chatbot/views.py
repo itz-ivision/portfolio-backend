@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from .models import FAQ
 from difflib import get_close_matches
 from transformers import AutoTokenizer, AutoModelForCausalLM
-import torch
+# import torch
 
 # Path to the fine-tuned model checkpoint
 model_name = "microsoft/DialoGPT-medium"
@@ -72,7 +72,7 @@ class ChatbotResponseAPIView(APIView):
         """
         try:
             # Clear CUDA memory before generating a response
-            torch.cuda.empty_cache()
+            # torch.cuda.empty_cache()
 
             # Prepend context to the query for a better conversational response (optional)
             context = "You: " + query + "\nAI:"
@@ -99,11 +99,11 @@ class ChatbotResponseAPIView(APIView):
             # Return the generated response (only the part after "AI:")
             return self.handle_success(ai_response)
 
-        except torch.cuda.OutOfMemoryError:
-            return self.handle_error(
-                "CUDA out of memory. Please try again later or use a smaller query.",
-                status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
+        # except torch.cuda.OutOfMemoryError:
+        #     return self.handle_error(
+        #         "CUDA out of memory. Please try again later or use a smaller query.",
+        #         status.HTTP_500_INTERNAL_SERVER_ERROR,
+        #     )
         except Exception as e:
             return self.handle_error(
                 f"Fine-tuned model error: {str(e)}", status.HTTP_500_INTERNAL_SERVER_ERROR
