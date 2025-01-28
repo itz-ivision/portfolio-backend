@@ -12,7 +12,7 @@ model_name = "microsoft/DialoGPT-medium"
 # Initialize model and tokenizer
 try:
     tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name).cuda()
+    model = AutoModelForCausalLM.from_pretrained(model_name)
 except Exception as e:
     model = None
     print(f"Error initializing fine-tuned model: {e}")
