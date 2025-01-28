@@ -25,8 +25,7 @@ SECRET_KEY = "django-insecure-6h2+l(%uh9wha=g=9sb6e57nvs4$!fg$(m(v4aktj4(#p=7wu1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["65.2.126.63", "thirdivision.in", "www.thirdivision.in", "https://thirdivision.in", ]
 
 # Application definition
 
@@ -70,8 +69,10 @@ MIDDLEWARE = [
 
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",
-    "http://192.168.0.104:4000",
+    "65.2.126.63", 
+    "thirdivision.in", 
+    "www.thirdivision.in", 
+    "https://thirdivision.in", 
 ]
 
 CORS_ALLOW_METHODS = [
